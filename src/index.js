@@ -9,4 +9,8 @@ const root = createRoot(rootElement);
 
 WhyDidYouRender(React, { trackAllPureComponents: true });
 
-root.render(<App />);
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
