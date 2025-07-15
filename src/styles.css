@@ -1,0 +1,15 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.add_new_button {
+  color: #fff;
+  padding: 10px;
+}
+
+.fieldset_verygood {
+  margin: "8px";
+  padding: "8px";
+  border: "1px solid #ccc";
+}
