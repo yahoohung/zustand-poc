@@ -1,33 +1,20 @@
 import React from "react";
 import { useTrackedStore } from "./store";
-
+import { InputBox } from "./InputBox";
 const PlayerRow = React.memo(({ rowKey }) => {
   console.log("Render row", rowKey);
-  const { players, updatePlayerField } = useTrackedStore();
+  // const player = useTrackedStore().players[rowKey];
 
   return (
     <fieldset className="fieldset_verygood">
       <legend>{rowKey}</legend>
       <div>
         <label>Name: </label>
-        <input
-          value={players[rowKey].name}
-          onChange={(e) => updatePlayerField(rowKey, "name", e.target.value)}
-        />
+        <InputBox rowKey={rowKey} inputType="name" />
       </div>
       <div>
         <label>Score: </label>
-        <input
-          type="number"
-          value={players[rowKey].score}
-          onChange={(e) =>
-            updatePlayerField(
-              rowKey,
-              "score",
-              parseInt(e.target.value, 10) || 0
-            )
-          }
-        />
+        <InputBox rowKey={rowKey} inputType="score" />
       </div>
     </fieldset>
   );

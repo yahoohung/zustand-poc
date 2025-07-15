@@ -3,10 +3,10 @@ import { useTrackedStore } from "./store";
 import { PlayerRow } from "./PlayerRow";
 import { AddButton } from "./AddButton";
 export function PlayerTable() {
-  const { byPlayersId } = useTrackedStore();
+  const playerList = useTrackedStore().byPlayersId;
   return (
     <div>
-      {byPlayersId.map((rk) => (
+      {playerList.map((rk) => (
         <PlayerRow key={rk} rowKey={rk} />
       ))}
       <AddButton />

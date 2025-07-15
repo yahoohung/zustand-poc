@@ -2,9 +2,9 @@ import React from "react";
 import { useTrackedStore } from "./store";
 
 export function AddButton() {
-  const { addNewPlayer } = useTrackedStore();
+  const addNewPlayer = useTrackedStore().addNewPlayer;
   return (
-    <button className="add_new_button" onClick={(e) => addNewPlayer()}>
+    <button className="add_new_button" onClick={() => addNewPlayer()}>
       Add New Player
     </button>
   );
