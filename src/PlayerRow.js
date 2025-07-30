@@ -1,9 +1,8 @@
 import React from "react";
-import { useTrackedStore } from "./store";
 import { InputBox } from "./InputBox";
+import { RemoveButton } from "./RemoveButton";
 const PlayerRow = React.memo(({ rowKey }) => {
   console.log("Render row", rowKey);
-  // const player = useTrackedStore().players[rowKey];
 
   return (
     <fieldset className="fieldset_verygood">
@@ -15,6 +14,9 @@ const PlayerRow = React.memo(({ rowKey }) => {
       <div>
         <label>Score: </label>
         <InputBox rowKey={rowKey} inputType="score" />
+      </div>
+      <div>
+        <RemoveButton rowKey={rowKey} />
       </div>
     </fieldset>
   );

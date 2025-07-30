@@ -1,8 +1,8 @@
 import React from "react";
-import { useTrackedStore } from "./store";
+import useStore from "./store";
 
 export function AddButton() {
-  const addNewPlayer = useTrackedStore().addNewPlayer;
+  const addNewPlayer = useStore((state) => state.addNewPlayer);
   return (
     <button className="add_new_button" onClick={() => addNewPlayer()}>
       Add New Player

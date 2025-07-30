@@ -1,13 +1,15 @@
 import React from "react";
-import { useTrackedStore } from "./store";
+import useStore from "./store";
 
-const InputBox = ({ rowKey, inputType }) => {
+const InputBox = React.memo(({ rowKey, inputType }) => {
   console.log("Render InputBox", rowKey, inputType);
-  const updatePlayerField = useTrackedStore().updatePlayerField;
-  const player = useTrackedStore().players[rowKey];
+  const updatePlayerField = useStore((state) => state.updatePlayerField);
+  const inputValue = useStore(
+    (state) => state.players.byIds[rowKey][inputType]
+  );
   return (
     <input
-      value={player[inputType]}
+      value={inputValue}
       onChange={(e) =>
         updatePlayerField(
           rowKey,
@@ -19,7 +21,7 @@ const InputBox = ({ rowKey, inputType }) => {
       }
     />
   );
-};
+});
 
 InputBox.whyDidYouRender = true;
 
