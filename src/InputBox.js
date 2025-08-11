@@ -1,11 +1,14 @@
-import React from "react";
-import useStore from "./store";
+import React, { useCallback } from "react";
+import { useStore } from "./store";
+import { useShallow } from "zustand/react/shallow";
 
-const InputBox = React.memo(({ rowKey, inputType }) => {
+const InputBox = React.memo(function InputBox({ rowKey, inputType }) {
   console.log("Render InputBox", rowKey, inputType);
-  const updatePlayerField = useStore((state) => state.updatePlayerField);
+  const updatePlayerField = useCallback(() => {
+    useStore((state) => state.updatePlayerField);
+  }, []);
   const inputValue = useStore(
-    (state) => state.players.byIds[rowKey][inputType]
+    useShallow((state) => state.players.byIds[rowKey][inputType])
   );
   return (
     <input
@@ -24,5 +27,6 @@ const InputBox = React.memo(({ rowKey, inputType }) => {
 });
 
 InputBox.whyDidYouRender = true;
+InputBox.name = "InputBox";
 
 export { InputBox };

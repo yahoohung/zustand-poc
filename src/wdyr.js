@@ -1,13 +1,13 @@
 import React from "react";
-const ZustandStore = require("./store");
+const { useStore } = require("./store");
 if (process.env.NODE_ENV === "development") {
-  const whyDidYouRender = require('@welldone-software/why-did-you-render');
+  const whyDidYouRender = require("@welldone-software/why-did-you-render");
   console.log("ENV", process.env.NODE_ENV);
 
   whyDidYouRender(React, {
     trackAllPureComponents: true,
     trackExtraHooks: [
-      [ZustandStore, "useStore"], // Replace 'useStore' with your actual exported hook name if different
+      [useStore, "useStore"], // Replace 'useStore' with your actual exported hook name if different
     ],
   });
 }

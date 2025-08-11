@@ -1,20 +1,23 @@
 import React, { useEffect } from "react";
-import useStore from "./store";
+import { selectPlayerScore, useStore } from "./store";
 import { PlayerRow } from "./PlayerRow";
 import { AddButton } from "./AddButton";
+import isEqual from "react-fast-compare";
+import { useShallow } from "zustand/react/shallow";
 export function PlayerTable() {
-  const playerList = useStore((state) => state.players.allIds);
+  const playerList = useStore(useShallow((state) => state.players.allIds));
+  console.log("Rendered PlayerTable");
+  // useEffect(() => {
+  //   const unsubscribe = useStore.subscribe(
+  //     (state) => state.players.allIds,
+  //     (count) => {
+  //       getState().sortPlayersByScore();
+  //     },
+  //     isEqual
+  //   );
 
-  useEffect(() => {
-    const unsubscribe = useStore.subscribe(
-      (state) => state.players.allIds,
-      (count) => {
-        console.log(`Count in useEffect: ${count}`);
-      }
-    );
-
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
   return (
     <div>
       {playerList.map((rk) => (

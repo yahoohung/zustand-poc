@@ -1,7 +1,7 @@
 import React from "react";
 import { InputBox } from "./InputBox";
 import { RemoveButton } from "./RemoveButton";
-const PlayerRow = React.memo(({ rowKey }) => {
+const PlayerRow = React.memo(function PlayerRow({ rowKey }) {
   console.log("Render row", rowKey);
 
   return (

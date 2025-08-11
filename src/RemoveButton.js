@@ -1,5 +1,5 @@
 import React from "react";
-import useStore from "./store";
+import { useStore } from "./store";
 
 export function RemoveButton({ rowKey }) {
   const removePlayer = useStore((state) => state.removePlayer);
